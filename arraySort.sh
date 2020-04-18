@@ -36,3 +36,8 @@ do
 done | sort -rn
 
 
+
+for item in ${dic[@]}
+do
+	echo $item
+done | sort
