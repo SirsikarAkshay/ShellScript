@@ -28,5 +28,11 @@ echo ${dic[@]}
 arr=()
 
 arr=${dic[@]}
-echo ${arr[@]}
+
+
+for item in ${dic[@]}
+do
+	echo $item
+done | sort -rn
+
 
