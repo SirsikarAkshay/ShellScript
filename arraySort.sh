@@ -24,3 +24,9 @@ dic[c4]=$res4
 
 echo ${dic[@]}
 
+
+arr=()
+
+arr=${dic[@]}
+echo ${arr[@]}
+
