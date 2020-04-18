@@ -15,3 +15,12 @@ echo $res3
 
 res4=$(($a%$b+$c))
 echo $res4
+
+declare -A dic
+dic[c1]=$res1
+dic[c2]=$res2
+dic[c3]=$res3
+dic[c4]=$res4
+
+echo ${dic[@]}
+
