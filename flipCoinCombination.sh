@@ -1,58 +1,100 @@
 #!/bin/bash 
 
-declare -A doubletDic
-headHead=0
-headTail=0
-tailHead=0
-tailTail=0
+declare -A tripletDic
+headHeadHead=0
+headHeadTail=0
+headTailHead=0 
+headTailTail=0
+tailHeadHead=0
+tailHeadTail=0
+tailTailHead=0
+tailTailTail=0
 
-headHeadArray=()
-headTailArray=()
-tailHeadArray=()
-tailTailArray=()
+headHeadHeadArray=()
+headHeadTailArray=()
+headtailHeadArray=()
+headTailTailArray=()
+tailHeadHeadArray=()
+tailHeadTailArray=()
+tailTailHeadArray=()
+tailTailTailArray=()
 
-for (( i=0; i<10; i++ ))
+for (( i=0; i<200; i++ ))
 do
 
 	dec1=$(($RANDOM%2+1))
 	dec2=$(($RANDOM%2+1))
+	dec3=$(($RANDOM%2+1))	
+
+	if(($dec1==1)) && (($dec2==1)) && (($dec3==1))
+	then
+		headHeadHead=$(($headHeadHead+1))
+		headHeadHeadArray+=('H,H,H')
+	elif(($dec1==1)) && (($dec2==2)) && (($dec3==1))
+	then
+		headTailHead=$(($headTailHead+1))
+		headTailHeadArray+=('H,T,H')
+	elif(($dec1==1)) && (($dec2==1)) && (($dec3==2))
+	then
+		headHeadTail=$(($headHeadTail+1))
+		headHeadTailArray+=('H,H,T')
+
+	elif(($dec1==1)) && (($dec2==2)) && (($dec3==2))                                                                         
+    then 
+	 	headHeadTail=$(($headTailTail+1))
+		headHeadTailArray+=('H,T,T')
 	
-	if(($dec1==1)) && (($dec2==1))
+	elif(($dec1==2)) && (($dec2==1)) && (($dec3==1))
+   then
+		tailHeadHead=$(($tailHeadHead+1))
+		tailHeadHeadArray+=('T,H,H')
+	elif(($dec1==2)) && (($dec2==1)) && (($dec3==2))
 	then
-		headHead=$(($headHead+1))
-		headHeadArray+=('H,H')
-	elif(($dec1==1)) && (($dec2==2))
+		tailHeadTail=$(($tailHeadTail+1))
+		tailHeadTailArray+=('T,H,T')
+	elif(($dec1==2)) && (($dec2==2)) && (($dec3==1))
 	then
-		headTail=$(($headTail+1))
-		headTailArray+=('H,T')
-	elif(($dec1==2)) && (($dec2==2))
-	then
-		tailHead=$(($tailHead+1))
-		tailHeadArray+=('T,H')
+		tailTailHead=$(($tailTailHead+1))
+		tailTailHeadArray+=('T,T,H')                                                                                   
 	else
-		tailTail=$(($tailTail+1))
-		tailTailArray+=('T,T')
+		tailTailTail=$(($tailTailTail+1))
+		tailTailTailArray+=('T,T,T')
 	fi
 done
 
-doubletDic[headHeads]=headHeadArray
-doubletDic[headTails]=headTailArray
-doubletDic[tailHeads]=tailHeadArray
-doubletDic[tailTails]=tailTailArray
+tripletDic[headHeadHeads]=headHeadHeadArray
+tripletDic[headHeadTails]=headHeadTailArray
+tripletDic[headTailHeads]=headTailHeadArray
+tripletDic[headTailTails]=headTailTailArray
+tripletDic[tailHeadHeads]=tailHeadHeadArray
+tripletDic[tailHeadTails]=tailHeadTailArray
+tripletDic[tailTailHeads]=tailTailHeadArray
+tripletDic[tailTailTails]=tailTailTailArray
 
-HHPercent=$((100*$headHead/10))
-HTPercent=$((100*$headTail/10))
-THPercent=$((100*$tailHead/10))
-TTPercent=$((100*$tailTail/10))
+HHHPercent=$((100*$headHeadHead/200))
+HHTPercent=$((100*$headHeadTail/200))
+HTHPercent=$((100*$headTailHead/200))
+HTTPercent=$((100*$headTailTail/200))
+THHPercent=$((100*$tailHeadHead/200))
+THTPercent=$((100*$tailHeadTail/200))
+TTHPercent=$((100*$tailTailHead/200))
+TTTPercent=$((100*$tailTailTail/200))
+
+echo "${headHeadHeadArray[@]}"
+echo "${headTailHeadArray[@]}"
+echo "${headHeadTailArray[@]}"
+echo "${headTailTailArray[@]}"
+echo "${tailHeadHeadArray[@]}"
+echo "${tailHeadTailArray[@]}"
+echo "${tailTailHeadArray[@]}"
+echo "${tailTailTailArray[@]}"
 
 
-echo "${headHeadArray[@]}"
-echo "${headTailArray[@]}"
-echo "${tailHeadArray[@]}"
-echo "${tailTailArray[@]}"
-
-echo "heads,heads percentage is $HHPercent"
-echo "heads,tails percentage is $HTPercent"
-echo "tails,heads percentage is $THPercent"
-echo "tails,tails percentage is $TTPercent"
-
+echo "heads,heads percentage is $HHHPercent"
+echo "heads,tails percentage is $HHTPercent"
+echo "tails,heads percentage is $HTHPercent"
+echo "tails,tails percentage is $HTTPercent"
+echo "heads,heads percentage is $THHPercent"
+echo "heads,tails percentage is $THTPercent"
+echo "tails,heads percentage is $TTHPercent"
+echo "tails,tails percentage is $TTTPercent"
