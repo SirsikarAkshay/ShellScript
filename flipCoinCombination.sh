@@ -98,3 +98,11 @@ echo "heads,heads percentage is $THHPercent"
 echo "heads,tails percentage is $THTPercent"
 echo "tails,heads percentage is $TTHPercent"
 echo "tails,tails percentage is $TTTPercent"
+
+percentArray=($HHHPercent,$HHTPercent,$HTHPercent,$HTTPercent,$THHPercent,$THTPercent,$TTHPercent,$TTTPercent)
+
+for item in ${percentArray[@]}
+do 
+        echo $item
+done | sort
+
