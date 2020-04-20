@@ -19,7 +19,7 @@ tailHeadTailArray=()
 tailTailHeadArray=()
 tailTailTailArray=()
 
-for (( i=0; i<200; i++ ))
+for (( i=0; i<100; i++ ))
 do
 
 	dec1=$(($RANDOM%2+1))
@@ -90,19 +90,19 @@ echo "${tailTailHeadArray[@]}"
 echo "${tailTailTailArray[@]}"
 
 
-echo "heads,heads percentage is $HHHPercent"
-echo "heads,tails percentage is $HHTPercent"
-echo "tails,heads percentage is $HTHPercent"
-echo "tails,tails percentage is $HTTPercent"
-echo "heads,heads percentage is $THHPercent"
-echo "heads,tails percentage is $THTPercent"
-echo "tails,heads percentage is $TTHPercent"
-echo "tails,tails percentage is $TTTPercent"
+echo "heads,heads,heads percentage is $HHHPercent"
+echo "heads,heads,tails percentage is $HHTPercent"
+echo "heads,tails,heads percentage is $HTHPercent"
+echo "heads,tails,tails percentage is $HTTPercent"
+echo "tails,heads,heads percentage is $THHPercent"
+echo "tails,heads,tails percentage is $THTPercent"
+echo "tails,tails,heads percentage is $TTHPercent"
+echo "tails,tails,tails percentage is $TTTPercent"
 
-percentArray=($HHHPercent,$HHTPercent,$HTHPercent,$HTTPercent,$THHPercent,$THTPercent,$TTHPercent,$TTTPercent)
+percentArray=($HHHPercent $HHTPercent $HTHPercent $HTTPercent $THHPercent $THTPercent $TTHPercent $TTTPercent)
 
-for item in ${percentArray[@]}
+for item in "${percentArray[@]}"
 do 
         echo $item
-done | sort
+done | sort -n
 
