@@ -1,5 +1,48 @@
 #!/bin/bash 
 
+declare -A singletDic
+heads=0
+tails=0
+
+headArray=()
+tailArray=()
+
+for (( i=0; i<10; i++ ))
+do
+
+        dec=$(($RANDOM%2+1))
+	
+	if(($dec==1))
+        then
+                heads=$(($heads+1))
+                headArray+=('heads')
+        else
+                tails=$(($tails+1))
+                tailArray+=('tails')
+        fi
+done
+
+singletDic[head]=headArray
+singletDic[tail]=tailArray
+headsPercent=$((100*$heads/10))
+tailsPercent=$((100*$tails/10))
+
+echo "${headArray[@]}"
+echo "${tailArray[@]}"
+
+echo "heads percentage is $headsPercent"
+echo "tails percentage is $tailsPercent"
+
+if(($headsPercent>$tailsPercent))
+then
+	echo "heads wins"
+elif(($tailsPercent>$headsPercent))
+then
+	echo "tails wins"
+else
+	echo "tied"
+fi
+
 declare -A tripletDic
 headHeadHead=0
 headHeadTail=0
@@ -77,15 +120,6 @@ THHPercent=$((100*$tailHeadHead/200))
 THTPercent=$((100*$tailHeadTail/200))
 TTHPercent=$((100*$tailTailHead/200))
 TTTPercent=$((100*$tailTailTail/200))
-
-echo "${headHeadHeadArray[@]}"
-echo "${headTailHeadArray[@]}"
-echo "${headHeadTailArray[@]}"
-echo "${headTailTailArray[@]}"
-echo "${tailHeadHeadArray[@]}"
-echo "${tailHeadTailArray[@]}"
-echo "${tailTailHeadArray[@]}"
-echo "${tailTailTailArray[@]}"
 
 
 echo "heads,heads,heads percentage is $HHHPercent"
