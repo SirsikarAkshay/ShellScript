@@ -14,18 +14,17 @@ tailTailArray=()
 for (( i=0; i<10; i++ ))
 do
 
-	dec1=$(($RANDOM%2+1))
-	dec2=$(($RANDOM%2+1))
+	dec1=$(($RANDOM%4))
 	
-	if(($dec1==1)) && (($dec2==1))
+	if(($dec1==0))
 	then
 		headHead=$(($headHead+1))
 		headHeadArray+=('H,H')
-	elif(($dec1==1)) && (($dec2==2))
+	elif(($dec1==1))
 	then
 		headTail=$(($headTail+1))
 		headTailArray+=('H,T')
-	elif(($dec1==2)) && (($dec2==2))
+	elif(($dec1==2)) 
 	then
 		tailHead=$(($tailHead+1))
 		tailHeadArray+=('T,H')
