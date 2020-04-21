@@ -22,37 +22,34 @@ tailTailTailArray=()
 for (( i=0; i<200; i++ ))
 do
 
-	dec1=$(($RANDOM%2+1))
-	dec2=$(($RANDOM%2+1))
-	dec3=$(($RANDOM%2+1))	
-
-	if(($dec1==1)) && (($dec2==1)) && (($dec3==1))
+	dec1=$(($RANDOM%8))
+	if(($dec1==0))
 	then
 		headHeadHead=$(($headHeadHead+1))
 		headHeadHeadArray+=('H,H,H')
-	elif(($dec1==1)) && (($dec2==2)) && (($dec3==1))
+	elif(($dec1==1))
 	then
 		headTailHead=$(($headTailHead+1))
 		headTailHeadArray+=('H,T,H')
-	elif(($dec1==1)) && (($dec2==1)) && (($dec3==2))
+	elif(($dec1==2))
 	then
 		headHeadTail=$(($headHeadTail+1))
 		headHeadTailArray+=('H,H,T')
 
-	elif(($dec1==1)) && (($dec2==2)) && (($dec3==2))                                                                         
-    then 
+	elif(($dec1==3))                                                                         
+    	then 
 	 	headHeadTail=$(($headTailTail+1))
 		headHeadTailArray+=('H,T,T')
 	
-	elif(($dec1==2)) && (($dec2==1)) && (($dec3==1))
-   then
+	elif(($dec1==4)) 
+   	then
 		tailHeadHead=$(($tailHeadHead+1))
 		tailHeadHeadArray+=('T,H,H')
-	elif(($dec1==2)) && (($dec2==1)) && (($dec3==2))
+	elif(($dec1==5))
 	then
 		tailHeadTail=$(($tailHeadTail+1))
 		tailHeadTailArray+=('T,H,T')
-	elif(($dec1==2)) && (($dec2==2)) && (($dec3==1))
+	elif(($dec1==6))
 	then
 		tailTailHead=$(($tailTailHead+1))
 		tailTailHeadArray+=('T,T,H')                                                                                   
