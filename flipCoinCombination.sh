@@ -55,3 +55,19 @@ echo "heads,tails percentage is $HTPercent"
 echo "tails,heads percentage is $THPercent"
 echo "tails,tails percentage is $TTPercent"
 
+if(($HHPercent>$HTPercent)) && (($HHPercent>$THPercent)) && (($HHPercent>$TTPercent))
+then 
+	echo "Heads,Heads wins!!!"
+elif(($HTPercent>$HHPercent)) && (($HTPercent>$THPercent)) && (($HTPercent>$TTPercent))
+then
+	echo "Heads,tails wins!!!"
+elif(($THPercent>$HHPercent)) && (($THPercent>$HTPercent)) && (($THPercent>$TTPercent))
+then
+	echo "Tails, heads wins!!!"
+elif(($TTPercent>$HHPercent)) && (($TTPercent>$HTPercent)) && (($TTPercent>$THPercent))
+then
+	echo "tails, tails wins!!!"
+else
+	echo "Tied between combinations"
+fi
+
