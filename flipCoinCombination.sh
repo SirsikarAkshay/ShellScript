@@ -1,35 +1,73 @@
 #!/bin/bash 
 
-declare -A singletDic
-heads=0
-tails=0
+declare -A doubletDic
+headHead=0
+headTail=0
+tailHead=0
+tailTail=0
 
-headArray=()
-tailArray=()
+headHeadArray=()
+headTailArray=()
+tailHeadArray=()
+tailTailArray=()
 
 for (( i=0; i<10; i++ ))
 do
 
-	dec=$(($RANDOM%2+1))
-
-	if(($dec==1))
+	dec1=$(($RANDOM%4))
+	
+	if(($dec1==0))
 	then
-		heads=$(($heads+1))
-		headArray+=('heads')
+		headHead=$(($headHead+1))
+		headHeadArray+=('H,H')
+	elif(($dec1==1))
+	then
+		headTail=$(($headTail+1))
+		headTailArray+=('H,T')
+	elif(($dec1==2)) 
+	then
+		tailHead=$(($tailHead+1))
+		tailHeadArray+=('T,H')
 	else
-		tails=$(($tails+1))
-		tailArray+=('tails')
+		tailTail=$(($tailTail+1))
+		tailTailArray+=('T,T')
 	fi
 done
 
-singletDic[head]=headArray
-singletDic[tail]=tailArray
-headsPercent=$((100*$heads/10))
-tailsPercent=$((100*$tails/10))
+doubletDic[headHeads]=headHeadArray
+doubletDic[headTails]=headTailArray
+doubletDic[tailHeads]=tailHeadArray
+doubletDic[tailTails]=tailTailArray
 
-echo "${headArray[@]}"
-echo "${tailArray[@]}"
+HHPercent=$((100*$headHead/10))
+HTPercent=$((100*$headTail/10))
+THPercent=$((100*$tailHead/10))
+TTPercent=$((100*$tailTail/10))
 
-echo "heads percentage is $headsPercent"
-echo "tails percentage is $tailsPercent"
+
+echo "${headHeadArray[@]}"
+echo "${headTailArray[@]}"
+echo "${tailHeadArray[@]}"
+echo "${tailTailArray[@]}"
+
+echo "heads,heads percentage is $HHPercent"
+echo "heads,tails percentage is $HTPercent"
+echo "tails,heads percentage is $THPercent"
+echo "tails,tails percentage is $TTPercent"
+
+if(($HHPercent>$HTPercent)) && (($HHPercent>$THPercent)) && (($HHPercent>$TTPercent))
+then 
+	echo "Heads,Heads wins!!!"
+elif(($HTPercent>$HHPercent)) && (($HTPercent>$THPercent)) && (($HTPercent>$TTPercent))
+then
+	echo "Heads,tails wins!!!"
+elif(($THPercent>$HHPercent)) && (($THPercent>$HTPercent)) && (($THPercent>$TTPercent))
+then
+	echo "Tails, heads wins!!!"
+elif(($TTPercent>$HHPercent)) && (($TTPercent>$HTPercent)) && (($TTPercent>$THPercent))
+then
+	echo "tails, tails wins!!!"
+else
+	echo "Tied between combinations"
+fi
 
